@@ -1,0 +1,43 @@
+{
+  "name": "js-library-setup-guide",
+  "version": "0.0.1",
+  "description": "A JavaScript Library Setup Guide and Script",
+  "license": "MIT",
+  "author": "te schultz",
+  "keywords": [
+    "javascript",
+    "js-library",
+    "setup-guide",
+    "setup-script"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artisin/js-library-setup-guide"
+  },
+  "bugs": {
+    "url": "https://github.com/artisin/js-library-setup-guide/issues"
+  },
+  "scripts": {
+    "commit": "git cz",
+    "release:major": "yarn run test && bumped release major",
+    "release:minor": "yarn run test && bumped release minor",
+    "release:patch": "yarn run test && bumped release patch",
+    "start": "node __scripts__/setup/cli-prompt.js"
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-customizable-te": "^5.1.0",
+    "fs-extra": "3.0.1",
+    "inquirer": "3.0.6",
+    "json-format": "1.0.1",
+    "lodash": "4.17.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable-te"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
+  }
+}
