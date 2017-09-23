@@ -31,17 +31,17 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
-    "babel-preset-env": "1.5.2",
+    "babel-preset-env": "^1.6.0",
  <<B"bumped": "^0.10.4",>>
  <<B"bumped-changelog": "^0.3.10",>>
  <<B"bumped-terminal": "^0.7.3",>>
  <<C"commitizen": "^2.9.6",>>
  <<C"cz-customizable-te": "^5.1.0",>>
-    "fs-extra": "3.0.1",
-    "lodash": "4.17.4",
+    "fs-extra": "^4.0.1",
+    "lodash": "^4.17.4",
     "mocha": "^3.4.2",
- <<T"should": "11.2.1",>>
-    "webpack": "^2.6.1",
+ <<T"should": "^13.1.0",>>
+    "webpack": "^3.6.0",
     "webpack-node-externals": "^1.6.0"
   }<<C,
   "config": {
