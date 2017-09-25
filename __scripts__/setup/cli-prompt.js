@@ -103,6 +103,13 @@ const questions = [
     when: when.hasWeb
   },
   {
+    type: 'input',
+    name: 'nvmrc',
+    message: 'Node Version Manager version, .nvmrc?',
+    default: '8.5.0',
+    when: when.warning
+  },
+  {
     type: 'confirm',
     name: 'readme',
     message: 'Overwrite current README.md?',
@@ -253,6 +260,11 @@ inquirer.prompt(questions).then(function (answers) {
     require('./generate-files/inject.generate.js')({
       dir: DIR,
       files: files
+    });
+    //.nvmrc
+    require('./generate-files/nvmrc.generate.js')({
+      dir: DIR,
+      nvmrc: answers.nvmrc
     });
     //.github
     require('./generate-files/github.generate.js')({
