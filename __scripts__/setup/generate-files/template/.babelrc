@@ -6,5 +6,8 @@
         <<WEB "browsers": ["<webTarget>"] >>
       },
     }]
+  ],
+  "plugins": [
+    "transform-inline-environment-variables"
   ]
 }
