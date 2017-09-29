@@ -40,7 +40,6 @@ const config = function (options) {
 
     //need to remove left over
     data = data.replace(/>>/g, '');
-    debugger
     //formate and write out file
     fs.writeFileSync(`${options.dir}package.json`, jsonFormat(JSON.parse(data), {
       type: 'space',
