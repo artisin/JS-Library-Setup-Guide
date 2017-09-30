@@ -8,6 +8,14 @@
     }]
   ],
   "plugins": [
-    "transform-inline-environment-variables"
+    ["transform-inline-environment-variables", {
+      "include": [
+        "NODE_ENV"
+      ]
+    }],
+    ["lodash", { "id": ["lodash"] }],
+    ["module-resolver", {
+      "root": [<<ROOT"./">>]
+    }]
   ]
 }

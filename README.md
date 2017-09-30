@@ -94,6 +94,14 @@ This file is for setting up a customizable [commitizen](http://commitizen.github
 Using commitizen depends largely on personal preference and during initial/early development I typically don't use it. However, once you release your project out into the wild it can be advantageous to have commit conventions not for you, but for others. In addition, commitizen is almost mandatory if you wish to use Zapper and it's commit message tests.
 
 
+### `.env-cmdrc`
+
+This file set environment variables for the npm scripts, [env-cmd](https://www.npmjs.com/package/env-cmd) is:
+
+> A simple node program for executing commands using an environment from an env file.
+
+Using environment variables makes your life ten times easier and env-cmdrc makes working with them a breeze in the park.
+
 ### `.editorconfig`
 
 This file set the rules for [EditorConfig](http://editorconfig.org/) which helps:

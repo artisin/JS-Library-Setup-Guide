@@ -222,14 +222,15 @@ const cliInquireInit = function() {
   inquirer.prompt(questions).then(function (answers) {
     //Directory to inject/write files to
     const DIR = '';
-    console.log(answers)
-    // buildScript(DIR, answers);
+    buildScript(DIR, answers);
   });
 };
 
 
 
-
+/**
+ * Init setup/test runner
+ */
 const initSetup = function() {
   if (process.env.NODE_ENV === 'production') {
     cliInquireInit();
@@ -240,29 +241,3 @@ const initSetup = function() {
 };
 initSetup();
 
-
-// { warning: true,
-//   authorName: 'test name',
-//   NPMorYARN: [ 'yarn' ],
-//   libraryName: 'test project',
-//   gitUSERNAME: 'tester',
-//   gitPROJECTNAME: 'github test name',
-//   libraryDescription: 'This is a test',
-//   target: [ 'node', 'web' ],
-//   babelNodeTarget: '3',
-//   babelWebTarget: '3',
-//   nvmrc: '8.5.0',
-//   readme: true,
-//   tests: true,
-//   bumpedrc: true,
-//   commitizen: true,
-//   zappr: true,
-//   editorconfig: true,
-//   eslintrc: true,
-//   gitattributes: true,
-//   gitignore: true,
-//   npmignore: true,
-//   changelog: true,
-//   wercker: true,
-//   git: true,
-//   removeSelf: true }

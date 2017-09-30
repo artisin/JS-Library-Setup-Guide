@@ -18,7 +18,7 @@ const buildScript = function(DIR, answers) {
       }, []) : [];
     };
     fileList(DIR).forEach(function (val) {
-      fs.removeSync(val);
+      fs.removeSync(path.join(DIR, val));
     });
 
     //ensure build path
@@ -30,6 +30,7 @@ const buildScript = function(DIR, answers) {
     //babelrc
     require('./generate-files/babelrc.generate.js')({
       dir: DIR,
+      modRoot: answers.modRoot,
       babelNodeTarget: answers.babelNodeTarget,
       babelWebTarget: answers.babelWebTarget,
       target: answers.target
@@ -51,8 +52,9 @@ const buildScript = function(DIR, answers) {
     if (answers.gitattributes) { files.push('.gitattributes'); }
     if (answers.gitignore) { files.push('.gitignore'); }
     if (answers.npmignore) { files.push('.npmignore'); }
-    if (answers.tests) { files.push('__tests__'); }
     if (answers.wercker) { files.push('wercker.yml'); }
+    //inject env rc regardless
+    files.push('.env-cmdrc');
     require('./generate-files/inject.generate.js')({
       dir: DIR,
       files: files
@@ -77,6 +79,7 @@ const buildScript = function(DIR, answers) {
     //always config package.json
     require('./generate-files/package.json.generate.js')({
       dir: DIR,
+      nodeEngine: answers.nvmrc,
       NPMorYARN: answers.NPMorYARN[0],
       libraryName: libraryURL,
       libraryDescription: answers.libraryDescription,
@@ -87,6 +90,16 @@ const buildScript = function(DIR, answers) {
       bumpedrc: answers.bumpedrc,
       commitizen: answers.commitizen
     });
+
+    //test dir
+    if (answers.tests) {
+      require('./generate-files/tests.generate.js')({
+        dir: DIR,
+        libraryName: libraryURL,
+        target: answers.target
+      });
+    }
+
     //readme
     if (answers.readme) {
       require('./generate-files/readme.generate.js')({
@@ -109,7 +122,15 @@ const buildScript = function(DIR, answers) {
     }
 
     //create lib/index.js
-    fs.ensureFileSync(path.resolve(DIR, 'lib/index.js'));
+    const index = path.resolve(DIR, 'lib/index.js');
+    fs.ensureFileSync(index);
+    fs.writeFileSync(index, `
+import { map } from 'lodash';
+
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const addMap = (arr) => map(arr, add);
+`, 'utf8');
     //delete old node_modules
     fs.removeSync(path.resolve(DIR, 'node_modules'));
     //delete yarn.lock

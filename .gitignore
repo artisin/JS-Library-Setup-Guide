@@ -1,6 +1,5 @@
 # Custom/library specific
-.iron-node.js
-
+__scripts__/__tests__/test-build
 
 # Global
 *~
@@ -8,7 +7,7 @@
 .directory
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
-# cache files for sublime textc
+# cache files for sublime text
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache

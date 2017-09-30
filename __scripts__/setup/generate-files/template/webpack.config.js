@@ -58,14 +58,14 @@ node.externals = [nodeExternals()];
  */
 const web = _.defaultsDeep({}, base);
 web.target = 'web';
-web.output.filename = '[name]-browser.js';
+web.output.filename = '[name].browser.js';
 
 /**
  * Web Min Build
  */
 const webMin = _.defaultsDeep({}, base);
 webMin.target = 'web';
-webMin.output.filename = '[name]-browser.min.js';
+webMin.output.filename = '[name].browser.min.js';
 if (!dev) {
   webMin.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
