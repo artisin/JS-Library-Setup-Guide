@@ -14,7 +14,7 @@
     }],
     ["lodash", { "id": ["lodash"] }],
     ["module-resolver", {
-      "root": ["/home/t/Desktop/projects/github/js-library-setup-guide-rev/__scripts__/__tests__/builds/should_build_with_new_author,_git,_description,_and_library_name/"]
+      "root": ["."]
     }]
   ]
 }
