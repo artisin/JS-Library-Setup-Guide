@@ -8,10 +8,14 @@ const path = require('path');
  * @param  {str} options.babelWebTarget  -> web target
  * @param  {arr} options.target          -> webpack targets
  */
-const config = function ({dir, babelNodeTarget, babelWebTarget, target}) {
+const config = function ({dir, modRoot, babelNodeTarget, babelWebTarget, target}) {
   let data = fs.readFileSync(path.resolve(__dirname, './template/.babelrc'));
   if (data) {
     data = data.toString();
+    /**
+     * Link Root mod link
+     */
+    data = data.replace(/<<ROOT.*?>>/, `"${modRoot || dir}"`);
 
     /**
      * Node target update

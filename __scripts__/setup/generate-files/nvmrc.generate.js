@@ -8,7 +8,7 @@ const config = function ({dir, nvmrc}) {
   let data = fs.readFileSync(path.resolve(__dirname, './template/.nvmrc'));
   if (data) {
     data = data.toString();
-    data = data.replace(/<VERSION>/g, Number(nvmrc));
+    data = data.replace(/<VERSION>/g, nvmrc).replace(/"|'/g, '');
 
     //write out file
     fs.writeFileSync(`${dir}.nvmrc`, data);

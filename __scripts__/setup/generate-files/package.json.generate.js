@@ -16,6 +16,9 @@ const config = function (options) {
       const reg = new RegExp(`<${val}>`, 'g');
       data = data.replace(reg, options[val]);
     });
+    //node engines
+    data = data.replace(/<<NE.*?>>/g, `">=${options.nodeEngine.split('')[0]}"`);
+
     if (!options.tests && !options.bumpedrc) {
       data = data.replace(/<<RT.*?>>/g, '');
     }else {
@@ -40,7 +43,6 @@ const config = function (options) {
 
     //need to remove left over
     data = data.replace(/>>/g, '');
-    debugger
     //formate and write out file
     fs.writeFileSync(`${options.dir}package.json`, jsonFormat(JSON.parse(data), {
       type: 'space',
@@ -54,6 +56,7 @@ const config = function (options) {
 //  */
 // config({
 //   dir: './__scripts__/setup/__tests__/',
+//   nodeEngine: '8.5.0',
 //   NPMorYARN: 'yarn',
 //   libraryName: 'js-base-library',
 //   libraryDescription: 'A test build',
