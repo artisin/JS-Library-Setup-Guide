@@ -1,4 +1,5 @@
 # JS Library Setup Guide
+[![wercker status](https://app.wercker.com/status/6b74cb8e232cae0b35d3b27bf034d9fc/s/master "wercker status")](https://app.wercker.com/project/byKey/6b74cb8e232cae0b35d3b27bf034d9fc)
 
 ## Description
 
