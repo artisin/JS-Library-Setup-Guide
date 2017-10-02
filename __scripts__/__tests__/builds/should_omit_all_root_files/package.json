@@ -22,7 +22,7 @@
     "commit": "git cz",
     "dev": "yarn run clean && env-cmd development webpack -w",
     "prepare": "npm test",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnly": "yarn run test",
     "test:build": "yarn install"
   },
   "dependencies": {

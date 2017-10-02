@@ -22,7 +22,7 @@
     "commit": "git cz",
     "dev": "npm run clean && env-cmd development webpack -w",
     "prepare": "npm test",
-    "prepublishOnly": "npm run test && npm run build",
+    "prepublishOnly": "npm run build && npm run test",
     "release:major": "npm run test && bumped release major",
     "release:minor": "npm run test && bumped release minor",
     "release:patch": "npm run test && bumped release patch",

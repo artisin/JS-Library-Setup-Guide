@@ -22,7 +22,7 @@
     "commit": "git cz",
     "dev": "<NPMorYARN> run clean && env-cmd development webpack -w",
     "prepare": "npm test",
-    "prepublishOnly": "<<T<NPMorYARN> run test && >><NPMorYARN> run build"<<RT,>>
+    "prepublishOnly": "<<T<NPMorYARN> run build && >><NPMorYARN> run test"<<RT,>>
  <<B"release:major": "<NPMorYARN> run test && bumped release major",>>
  <<B"release:minor": "<NPMorYARN> run test && bumped release minor",>>
  <<B"release:patch": "<NPMorYARN> run test && bumped release patch"<<T,>>>>
