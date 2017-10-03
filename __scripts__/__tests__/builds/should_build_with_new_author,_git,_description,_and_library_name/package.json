@@ -22,7 +22,7 @@
     "commit": "git cz",
     "dev": "yarn run clean && env-cmd development webpack -w",
     "prepare": "npm test",
-    "prepublishOnly": "yarn run test && yarn run build",
+    "prepublishOnly": "yarn run build && yarn run test",
     "release:major": "yarn run test && bumped release major",
     "release:minor": "yarn run test && bumped release minor",
     "release:patch": "yarn run test && bumped release patch",
