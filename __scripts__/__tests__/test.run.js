@@ -42,7 +42,7 @@ const readFile = function(file) {
  * @param  {str} path2 -> test build
  */
 const folderDiff = function(path1, path2) {
-  const options = {compareSize: true};
+  const options = {compareSize: true, excludeFilter: 'node_modules'};
   const res = dircompare.compareSync(path1, path2, options);
   colur(`
     Equal:        ===> ${res.equal}
@@ -54,15 +54,23 @@ const folderDiff = function(path1, path2) {
   `, {error: true, stringCaps: false});
   //display indv diff
   res.diffSet.forEach(function (entry) {
-    if (entry.state !== 'equal') {
-      const file1 = readFile(entry.path1 + entry.name1);
-      const file2 = readFile(entry.path2 + entry.name2);
-      const diffComp = diff.diffTrimmedLines(file1, file2);
-      diffComp.forEach(function(part) {
-        // green for additions, red for deletions grey for common parts
-        const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-        process.stderr.write(part.value[color]);
-      });
+    if (entry.state !== 'equal' && (entry.type1 === 'file' || entry.type2 === 'file')) {
+      const file1Path = entry.path1 && entry.name1 ? path.join(entry.path1, entry.name1) : false;
+      const file1 =  file1Path ? readFile(file1Path) : '';
+      const file2Path = entry.path2 && entry.name2 ? path.join(entry.path2, entry.name2) : false;
+      const file2 = file2Path ? readFile(file2Path) : '';
+      if (!file1.length) {
+        colur(`File Deleted: ${file2Path}`, {error: true});
+      }else if (!file2.length) {
+        colur(`File Added: ${file1Path}`, {error: true});
+      }else {
+        const diffComp = diff.diffTrimmedLines(file1, file2);
+        diffComp.forEach(function(part) {
+          // green for additions, red for deletions grey for common parts
+          const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+          process.stderr.write(part.value[color]);
+        });
+      }
     }
   });
 };
@@ -74,7 +82,7 @@ const folderDiff = function(path1, path2) {
  * @return {str}     -> checksum
  */
 const getCheckSum = function(dir) {
-  const files = glob.sync([`${dir}/**/**`], {dot: true});
+  const files = glob.sync([`${dir}/**/**`, `${dir}/!node_modules/**`], {dot: true});
   return hash.sync({files: files});
 };
 
