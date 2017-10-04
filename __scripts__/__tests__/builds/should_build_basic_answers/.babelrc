@@ -10,6 +10,9 @@
   ],
   "plugins": [
     "dynamic-import-node",
+    ["fast-async", {
+      "spec":true
+    }],
     ["transform-inline-environment-variables", {
       "include": [
         "NODE_ENV"
