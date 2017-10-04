@@ -52,6 +52,7 @@
     "eslint": "^4.3.0",
     "eslint-plugin-lodash": "2.4.5",
     "eslint-plugin-node": "5.2.0",
+    "fast-async": "6.3.0",
     "fs-extra": "^4.0.1",
     "lodash": "^4.17.4",
     "mocha": "^3.4.2",
