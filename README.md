@@ -72,7 +72,7 @@ Here's a example configuration that is also the default configuration. It target
 ```
 
 
-To determine your environment and the corresponding support for ECMAScript features you can use the [`compat-table`](https://kangax.github.io/compat-table/es6/). There's also plethora of options and configures that you can read about in the [repository](https://github.com/babel/babel-preset-env).
+To determine your environment and the corresponding support for ECMAScript features you can use the [`compat-table`](https://kangax.github.io/compat-table/es6/). There's also plethora of options and configures that you can read about in the [repository](https://github.com/babel/babel-preset-env). Keep in mind that you **must** include `import 'babel-polyfill';` otherwise [babel-preset-env](https://github.com/babel/babel-preset-env) not include any polyfills.
 
 
 ### `.bumpedrc`
