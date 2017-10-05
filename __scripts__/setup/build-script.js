@@ -125,6 +125,8 @@ const buildScript = function(DIR, answers) {
     const index = path.resolve(DIR, 'lib/index.js');
     fs.ensureFileSync(index);
     fs.writeFileSync(index, `
+// @NOTE babel-polyfill needs to be declared in order need for babel-preset-env to polyfill
+import 'babel-polyfill';
 import { map } from 'lodash';
 
 export const add = (a, b) => a + b;
